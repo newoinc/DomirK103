@@ -5,10 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ドミールケー | Guest Guide</title>
   <style>
-    :root { --primary: #1e293b; --bg: #f8fafc; --card: #ffffff; --accent: #2563eb; --warning: #dc2626; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background: var(--bg); color: #334155; margin: 0; padding: 20px 15px; display: flex; justify-content: center; }
+    :root { 
+      --primary: #1e293b; 
+      --bg: #f8fafc; 
+      --card: #ffffff; 
+      --accent: #2563eb; 
+      --warning: #dc2626; 
+      --text: #334155;
+    }
     
-    .container { width: 100%; max-width: 480px; background: var(--card); border-radius: 16px; padding: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); box-sizing: border-box; transition: all 0.3s ease; }
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
+      background: var(--bg); 
+      color: var(--text); 
+      margin: 0; 
+      padding: 20px 15px; 
+      display: flex; 
+      justify-content: center; 
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    .container { 
+      width: 100%; 
+      max-width: 480px; 
+      background: var(--card); 
+      border-radius: 20px; 
+      padding: 20px; 
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.01); 
+      box-sizing: border-box; 
+      transition: all 0.3s ease; 
+    }
     
     @media (min-width: 768px) {
       .container { max-width: 900px; padding: 35px; }
@@ -18,65 +44,127 @@
     }
 
     .header { border-bottom: 2px solid #f1f5f9; padding-bottom: 15px; margin-bottom: 20px; }
-    .title { margin: 5px 0 0; color: var(--primary); font-size: 22px; font-weight: bold; }
+    .title { margin: 5px 0 0; color: var(--primary); font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
 
     /* 語言散開式按鈕樣式 */
-    .lang-btn-group { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; justify-content: center; }
-    .lang-btn-item { background: #f1f5f9; color: var(--primary); border: 1px solid #cbd5e1; padding: 6px 12px; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 12px; transition: 0.2s; }
+    .lang-btn-group { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; justify-content: center; }
+    .lang-btn-item { 
+      background: #f1f5f9; 
+      color: var(--primary); 
+      border: 1px solid #cbd5e1; 
+      padding: 6px 14px; 
+      border-radius: 20px; 
+      cursor: pointer; 
+      font-weight: 700; 
+      font-size: 12px; 
+      transition: all 0.2s ease; 
+    }
+    .lang-btn-item:active { transform: scale(0.95); }
     .lang-btn-item:hover, .lang-btn-item.active { background: var(--primary); color: #ffffff; border-color: var(--primary); }
 
     /* Access Guide vs Room Guide 切換 */
     .main-guide-tabs { display: flex; gap: 10px; margin-bottom: 20px; }
-    .main-btn { flex: 1; padding: 14px; text-align: center; background: #e2e8f0; color: #475569; font-weight: bold; font-size: 15px; border-radius: 10px; cursor: pointer; transition: 0.2s; }
-    .main-btn.active { background: var(--primary); color: #ffffff; }
+    .main-btn { 
+      flex: 1; 
+      padding: 14px; 
+      text-align: center; 
+      background: #e2e8f0; 
+      color: #475569; 
+      font-weight: 700; 
+      font-size: 15px; 
+      border-radius: 12px; 
+      cursor: pointer; 
+      transition: all 0.2s ease; 
+    }
+    .main-btn:active { transform: scale(0.98); }
+    .main-btn.active { background: var(--primary); color: #ffffff; box-shadow: 0 4px 12px rgba(30, 41, 59, 0.2); }
 
     /* Room Guide 主選單：3x3 九宮格 */
     .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 20px; }
-    .menu-btn { background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 10px; padding: 10px 4px; text-align: center; cursor: pointer; font-weight: bold; font-size: 12px; color: var(--primary); transition: 0.2s; word-break: break-all; }
-    .menu-btn:hover, .menu-btn.active { background: var(--accent); color: #ffffff; border-color: var(--accent); }
+    .menu-btn { 
+      background: #f1f5f9; 
+      border: 1px solid #e2e8f0; 
+      border-radius: 12px; 
+      padding: 12px 4px; 
+      text-align: center; 
+      cursor: pointer; 
+      font-weight: 700; 
+      font-size: 12px; 
+      color: var(--primary); 
+      transition: all 0.2s ease; 
+      word-break: break-all; 
+    }
+    .menu-btn:active { transform: scale(0.96); }
+    .menu-btn:hover, .menu-btn.active { background: var(--accent); color: #ffffff; border-color: var(--accent); box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25); }
     .menu-btn-warning { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
-    .menu-btn-warning.active, .menu-btn-warning:hover { background: #dc2626; color: #ffffff; border-color: #dc2626; }
+    .menu-btn-warning.active, .menu-btn-warning:hover { background: #dc2626; color: #ffffff; border-color: #dc2626; box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25); }
 
     .guide-section { display: none; }
     .guide-section.active { display: block; }
 
-    .tab-content { display: none; background: #fafafa; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; margin-bottom: 15px; }
-    .tab-content.active { display: block; }
-    .section-title { font-size: 16px; font-weight: bold; color: var(--primary); margin-bottom: 12px; border-left: 4px solid var(--accent); padding-left: 8px; }
+    .tab-content { display: none; background: #fafafa; border: 1px solid #e2e8f0; border-radius: 14px; padding: 20px; margin-bottom: 15px; }
+    .tab-content.active { display: block; animation: fadeIn 0.25s ease-in-out; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-title { font-size: 16px; font-weight: 800; color: var(--primary); margin-bottom: 12px; border-left: 4px solid var(--accent); padding-left: 10px; }
     
-    .info-card { background: #ffffff; border-radius: 8px; padding: 14px; margin-bottom: 10px; border: 1px solid #edf2f7; font-size: 14px; line-height: 1.5; }
-    .warning-card { background: #fef2f2; border: 1px solid #fecaca; border-radius: 8px; padding: 14px; color: #991b1b; font-size: 13px; line-height: 1.5; }
+    .info-card { background: #ffffff; border-radius: 10px; padding: 14px; margin-bottom: 10px; border: 1px solid #edf2f7; font-size: 14px; line-height: 1.5; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
+    .warning-card { background: #fef2f2; border: 1px solid #fecaca; border-radius: 10px; padding: 14px; color: #991b1b; font-size: 13px; line-height: 1.5; }
     
-    .rule-title { font-weight: bold; color: var(--primary); margin-top: 10px; margin-bottom: 4px; display: block; }
+    .rule-title { font-weight: 700; color: var(--primary); margin-top: 10px; margin-bottom: 4px; display: block; }
     .rule-desc { font-size: 13px; color: #475569; margin: 0 0 10px 0; line-height: 1.5; }
 
     /* 解鎖步驟清單 */
-    .unlock-step { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px; margin-top: 8px; font-size: 13px; line-height: 1.5; }
-    .unlock-step-title { font-weight: bold; color: var(--primary); margin-bottom: 4px; }
+    .unlock-step { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; margin-top: 8px; font-size: 13px; line-height: 1.5; }
+    .unlock-step-title { font-weight: 700; color: var(--primary); margin-bottom: 4px; }
 
     /* 家電子選單專用樣式 */
     .sub-menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 15px; }
-    .sub-menu-btn { background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 10px 6px; text-align: center; cursor: pointer; font-weight: bold; font-size: 12px; color: var(--primary); transition: 0.2s; }
+    .sub-menu-btn { background: #ffffff; border: 1px solid #cbd5e1; border-radius: 10px; padding: 10px 6px; text-align: center; cursor: pointer; font-weight: 700; font-size: 12px; color: var(--primary); transition: all 0.2s ease; }
+    .sub-menu-btn:active { transform: scale(0.96); }
     .sub-menu-btn.active, .sub-menu-btn:hover { background: #e0e7ff; color: var(--accent); border-color: var(--accent); }
     .appliance-detail { display: none; }
-    .appliance-detail.active { display: block; }
+    .appliance-detail.active { display: block; animation: fadeIn 0.25s ease-in-out; }
 
     /* 電器標題：齊頭對齊 */
     .appliance-header { display: flex; flex-direction: column; align-items: flex-start; border-bottom: 2px solid #e2e8f0; padding-bottom: 6px; margin-bottom: 10px; }
     .appliance-title-main { font-weight: 900; color: var(--accent); font-size: 18px; line-height: 1.2; }
     .appliance-title-sub { font-weight: 700; color: #64748b; font-size: 13px; margin-top: 2px; line-height: 1.2; }
     .appliance-list { padding-left: 0; list-style: none; margin: 0 0 10px 0; font-size: 13px; color: #475569; }
-    .appliance-list li { padding: 4px 0; border-bottom: 1px dashed #f1f5f9; }
+    .appliance-list li { padding: 6px 0; border-bottom: 1px dashed #f1f5f9; }
 
-    .guide-img { max-width: 280px; width: 100%; height: auto; display: block; margin: 12px auto; border-radius: 8px; border: 1px solid #e2e8f0; }
+    .guide-img { max-width: 280px; width: 100%; height: auto; display: block; margin: 12px auto; border-radius: 10px; border: 1px solid #e2e8f0; }
 
-    .btn { display: block; width: 100%; padding: 12px; text-align: center; background: var(--accent); color: white; text-decoration: none; border-radius: 8px; font-weight: bold; border: none; cursor: pointer; box-sizing: border-box; margin-top: 10px; font-size: 14px; }
+    .btn { 
+      display: block; 
+      width: 100%; 
+      padding: 12px; 
+      text-align: center; 
+      background: var(--accent); 
+      color: white; 
+      text-decoration: none; 
+      border-radius: 10px; 
+      font-weight: 700; 
+      border: none; 
+      cursor: pointer; 
+      box-sizing: border-box; 
+      margin-top: 10px; 
+      font-size: 14px; 
+      transition: all 0.2s ease;
+    }
+    .btn:active { transform: scale(0.98); }
     .btn-map { background: #16a34a; color: white; }
+    .btn-map:hover { background: #15803d; }
     .btn-x { background: #000000; color: white; }
     .btn-ig { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: white; }
-    .tel-btn { background: #16a34a; color: white; text-decoration: none; padding: 10px 16px; border-radius: 6px; display: inline-block; font-weight: bold; margin-top: 8px; }
-    
-    /* 四國語言切換顯示控制 */
+    .tel-btn { background: #16a34a; color: white; text-decoration: none; padding: 10px 16px; border-radius: 8px; display: inline-block; font-weight: 700; margin-top: 8px; transition: all 0.2s ease; }
+    .tel-btn:active { transform: scale(0.96); }
+
+    /* 多國語言切換預設隱藏 */
     .lang-en, .lang-zh, .lang-ko { display: none; }
 
     @media print {
@@ -137,7 +225,7 @@
       </a>
     </div>
 
-    <!-- ✈️️ 空港からのアクセス -->
+    <!-- ✈️ 空港からのアクセス -->
     <div class="info-card">
       <div class="section-title lang-ja">✈️ 空港からのアクセス</div>
       <div class="section-title lang-en">✈️ Access from the Airport</div>
@@ -172,13 +260,13 @@
         點擊下方按鈕即可查看 Google Maps 路線導覽。
       </p>
       <p class="lang-ko rule-desc">
-        가장 가까운 치카테츠 아카츠카역에서 숙소까지는 도보로 약 5분 소요됩니다.<br>
-        아래 버튼을 누르시면 Google 지도에서 길 안내를 확인하실 수 있습니다.
+        가장 가까운 치카테츠 아카츠카역에서 숙소まで는 도보로 약 5분 소요됩니다.<br>
+        아래 버튼을 누르시면 Google 지도에서 길 안내를確認하실 수 있습니다.
       </p>
 
       <a href="https://maps.app.goo.gl/kzVwwHTM3p473JZ7A" target="_blank" class="btn btn-map">
         <span class="lang-ja">🗺 GoogleMapで道案内を見る</span>
-        <span class="lang-en">🗺️ Open Directions on Google Maps</span>
+        <span class="lang-en">🗺️️ Open Directions on Google Maps</span>
         <span class="lang-zh">🗺️ 開啟 Google Maps 路線導覽</span>
         <span class="lang-ko">🗺️ Google 지도에서 길 안내 열기</span>
       </a>
@@ -330,7 +418,7 @@
         <p class="lang-ja rule-desc">外出時は、エアコン、ルームライトなどその他家電製品の電源はお切りください。</p>
         <p class="lang-en rule-desc">Please turn off the air conditioner, room lights, and other electronic devices when leaving.</p>
         <p class="lang-zh rule-desc">外出時請務必關閉空調、電燈等所有電器電源。</p>
-        <p class="lang-ko rule-desc">외출 시 에어컨, 조명 등 가전제품의 전원을 꺼주세요.</p>
+        <p class="lang-ko rule-desc">외출 시 에어컨, 조명 등 가전製品의 전원을 꺼주세요.</p>
 
         <span class="rule-title">⚠️ 破損・賠償 / Damage Compensation</span>
         <p class="lang-ja rule-desc">建物や設備、備品を破損した場合、修繕費と営業補償費をご負担頂きます。</p>
@@ -458,7 +546,7 @@
         
         <p class="lang-zh" style="margin-top:0; line-height: 1.6;"><strong>室內及建築敷地內全面禁止吸菸。</strong><br>包含加熱菸與電子菸在內，嚴禁在室內吸菸。<br><br>若發現室內有吸菸行為，將收取特殊清潔費及營業損失補償違約金。</p>
         
-        <p class="lang-ko" style="margin-top:0; line-height: 1.6;"><strong>실내 및 부지 내는 전구역 금연입니다.</strong><br>전자담배 및 권련형 담배를 포함하여 실내 흡연은 엄격히 금지되어 있습니다.<br><br>만일 실내 흡연이 적発될 경우 청소비 및 영업 보상비로 위약금이 청구됩니다.</p>
+        <p class="lang-ko" style="margin-top:0; line-height: 1.6;"><strong>실내 및 부지 내는 전구역 금연입니다.</strong><br>전자담배 및 권련형 담배를 포함하여 실내 흡연은 엄격히 금지되어 있습니다.<br><br>만일 실내 흡연이 적発될 경우 청소비 및 영업 보상비로 위約금이 청구됩니다.</p>
       </div>
     </div>
 
@@ -472,7 +560,7 @@
       <div class="info-card">
         <p style="margin: 4px 0;"><strong>SSID:</strong> aterm-Oe 1214-a</p>
         <p style="margin: 4px 0;"><strong>Password:</strong> <span id="wifi-pass">2ca0519702772</span></p>
-        <button class="btn" onclick="copyWifi()">
+        <button class="btn" id="copy-btn" onclick="copyWifi()">
           <span class="lang-ja">パスワードをコピー</span>
           <span class="lang-en">Copy Password</span>
           <span class="lang-zh">複製密碼</span>
@@ -496,7 +584,7 @@
       <!-- 家電子選單按鈕 -->
       <div class="sub-menu-grid">
         <div class="sub-menu-btn active" onclick="openAppliance('app-air', this)">❄️ エアコン / AC</div>
-        <div class="sub-menu-btn" onclick="openAppliance('app-light', this)">💡 照明 / Light</div>
+        <div class="sub-menu-btn" onclick="openAppliance('app-light', this)">📺 リモコン / Remote</div>
         <div class="sub-menu-btn" onclick="openAppliance('app-water', this)">♨️ 給湯器 / Heater</div>
         <div class="sub-menu-btn" onclick="openAppliance('app-micro', this)">📻 電子レンジ / Microwave</div>
         <div class="sub-menu-btn" onclick="openAppliance('app-oven', this)">🍞 トースター / Oven</div>
@@ -516,27 +604,27 @@
           <li><strong>暖房:</strong> Heating / 暖氣 / 난방</li>
           <li><strong>停止:</strong> Stop / 關機 / 정지</li>
           <li><strong>風速:</strong> Fan Speed / 風速 / 풍량</li>
+          <li><strong>風量:</strong> Airflow Volume / 風量 / 풍량</li>
           <li><strong>風向:</strong> Direction / 風向 / 풍향</li>
-          <li><strong>室温:</strong> Temp / 溫度調整 / 온도</li>
+          <li><strong>温度:</strong> Temp / 溫度調整 / 온도</li>
         </ul>
         <img src="air.jpg" alt="Air Conditioner Remote 1" class="guide-img">
         <img src="air2.jpg" alt="Air Conditioner Remote 2" class="guide-img">
       </div>
 
-      <!-- 2. 照明 -->
+      <!-- 2. リモコン -->
       <div id="app-light" class="info-card appliance-detail">
         <div class="appliance-header">
-          <div class="appliance-title-main">💡 照明リモコン</div>
-          <div class="appliance-title-sub">Light Remote / 電燈遙控器 / 조명 리모컨</div>
+          <div class="appliance-title-main">📺 リモコン</div>
+          <div class="appliance-title-sub">Remote Controller / 遙控器 / 리모컨</div>
         </div>
         <ul class="appliance-list">
-          <li><strong>全灯 / 点灯:</strong> Light On / 開燈 / 전등</li>
-          <li><strong>消灯:</strong> Light Off / 關燈 / 소등</li>
-          <li><strong>常夜灯:</strong> Night Light / 夜燈 / 야간등</li>
-          <li><strong>明 / 暗:</strong> Brightness / 亮度調節 / 밝기</li>
+          <li><strong>音量:</strong> Volume / 音量 / 음량</li>
+          <li><strong>チャンネル:</strong> Channel / 頻道 / 채널</li>
+          <li><strong>入力切換:</strong> Input / 輸入切換 / 입력 전환</li>
+          <li><strong>決定:</strong> OK / Select / 確定 / 결정</li>
         </ul>
-        <img src="lighting.jpg" alt="Lighting Remote 1" class="guide-img">
-        <img src="lighting2.jpg" alt="Lighting Remote 2" class="guide-img">
+        <img src="lighting.jpg" alt="Remote Controller" class="guide-img">
       </div>
 
       <!-- 3. 給湯器 -->
@@ -546,10 +634,7 @@
           <div class="appliance-title-sub">Water Heater / 熱水器 / 온수기</div>
         </div>
         <ul class="appliance-list">
-          <li><strong>入/切:</strong> Power On/Off / 開關 / 전원</li>
-          <li><strong>ふろ自動:</strong> Auto Bath / 自動加熱 / 自動 온수</li>
-          <li><strong>追いたき:</strong> Reheat / 再加熱 / 추가 온수</li>
-          <li><strong>温度:</strong> Temperature / 溫度 / 온도</li>
+          <li><strong>運転:</strong> Power / 運轉(開關) / 운전</li>
         </ul>
         <img src="Water Heater.jpg" alt="Water Heater Remote" class="guide-img">
       </div>
@@ -614,8 +699,7 @@
           <li><strong>予約:</strong> Preset / 預約 / 예약</li>
           <li><strong>風乾燥:</strong> Air Jet Dry / 風乾 / 바람건조</li>
         </ul>
-        <img src="washing_machine.jpg" alt="Washing Machine 1" class="guide-img">
-        <img src="washing_machine2.jpg" alt="Washing Machine 2" class="guide-img">
+        <img src="washing_machine.jpg" alt="Washing Machine" class="guide-img">
       </div>
     </div>
 
@@ -628,18 +712,18 @@
       
       <div class="info-card">
         <span class="rule-title lang-ja">🗺️ 周辺ガイドマップ</span>
-        <span class="rule-title lang-en">🗺️ Nearby Guide Map</span>
-        <span class="rule-title lang-zh">🗺️ 周邊導覽地圖</span>
+        <span class="rule-title lang-en">🗺 Nearby Guide Map</span>
+        <span class="rule-title lang-zh">🗺 周邊導覽地圖</span>
         <span class="rule-title lang-ko">🗺️ 주변 가이드 맵</span>
         
         <p class="lang-ja rule-desc">近隣のコンビニ、スーパー、おすすめスポットなどの詳細情報は、下記ボタンよりご覧ください。</p>
         <p class="lang-en rule-desc">Please click the button below to open our online guide map for nearby stores and spots.</p>
         <p class="lang-zh rule-desc">周邊便利商店、超市及推薦景點等詳細資訊，請點擊下方按鈕前往查看。</p>
-        <p class="lang-ko rule-desc">주변 편의점, 마트, 추천 장소 등 상세 정보는 아래 버튼을 클릭하여 확인해 주세요.</p>
+        <p class="lang-ko rule-desc">주변 편의점, 마트, 추천 장소 등 상세 정보는 아래 버튼을 클릭하여確認해 주세요.</p>
         
-        <a href="https://sites.google.com/newo.co.jp/yahiro/%E3%83%9B%E3%83%BC%E3%83%A0" target="_blank" class="btn btn-map">
-          <span class="lang-ja">🗺️ 周辺ガイドマップを開く</span>
-          <span class="lang-en">🗺️️ Open Nearby Guide Map</span>
+        <a href="https://sites.google.com/newo.co.jp/domir-k?usp=sharing" target="_blank" class="btn btn-map">
+          <span class="lang-ja">🗺 周辺ガイドマップを開く</span>
+          <span class="lang-en">🗺 Open Nearby Guide Map</span>
           <span class="lang-zh">🗺️ 開啟周邊地圖</span>
           <span class="lang-ko">🗺️ 주변 가이드 맵 열기</span>
         </a>
@@ -706,33 +790,47 @@
     btnElement.classList.add('active');
   }
 
-  // 多國語言點擊直接切換
+  // 多國語言切換優化版
   let currentLang = 'ja';
   function setLang(langCode, btnElement) {
     currentLang = langCode;
 
-    // 更新按鈕選取樣式
     document.querySelectorAll('.lang-btn-item').forEach(btn => btn.classList.remove('active'));
     btnElement.classList.add('active');
 
-    // 切換頁面文字顯示
     ['ja', 'en', 'zh', 'ko'].forEach(lang => {
       document.querySelectorAll('.lang-' + lang).forEach(el => {
-        el.style.display = (lang === langCode) ? 'inline-block' : 'none';
+        if (lang === langCode) {
+          if (el.tagName === 'SPAN') el.style.display = 'inline';
+          else if (el.tagName === 'DIV' || el.tagName === 'P') el.style.display = 'block';
+          else el.style.display = 'inline-block';
+        } else {
+          el.style.display = 'none';
+        }
       });
     });
   }
 
+  // 無 Alert 的順滑複製體驗
   function copyWifi() {
     const pass = document.getElementById('wifi-pass').innerText;
+    const copyBtn = document.getElementById('copy-btn');
+    const originalText = copyBtn.innerHTML;
+
     navigator.clipboard.writeText(pass).then(() => {
       const msgs = {
-        ja: 'パスワードをコピーしました！',
-        en: 'Password Copied!',
-        zh: '已複製密碼！',
-        ko: '비밀번호가 복사되었습니다!'
+        ja: '✓ パスワードをコピーしました！',
+        en: '✓ Password Copied!',
+        zh: '✓ 已複製密碼！',
+        ko: '✓ 비밀번호가 복사되었습니다!'
       };
-      alert(msgs[currentLang]);
+      copyBtn.innerHTML = msgs[currentLang];
+      copyBtn.style.backgroundColor = '#16a34a';
+
+      setTimeout(() => {
+        copyBtn.innerHTML = originalText;
+        copyBtn.style.backgroundColor = '';
+      }, 2000);
     }).catch(err => {
       console.error('Copy failed', err);
     });
